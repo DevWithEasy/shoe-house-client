@@ -56,9 +56,9 @@ const Signin = () => {
 
     return (
         <div
-            className='h-screen w-full grid grid-cols-2 bg-sky-500 text-white'
+            className='h-screen w-full grid md:grid-cols-2 bg-sky-500 text-white'
         >
-            <div className='w-full flex flex-col justify-center items-center space-y-2 p-4'>
+            <div className='w-full hidden md:flex flex-col justify-center items-center space-y-2 p-4'>
                 <h1
                     className='text-4xl font-bold uppercase'
                 >
@@ -67,7 +67,7 @@ const Signin = () => {
                 <p
                     className='font-bold text-xl'
                 >
-                    Best Point of sales (POS) solutions of Super Shop.
+                    Buy you favourite shoe.
                 </p>
                 <p
                     className='text-xs'
