@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import useUserStore from '../../store/userStore';
 import baseUrl from '../../utils/baseUrl';
 import Heading from '../../components/Heading';
-import ProductListItem_Home from '../../components/ProductListItem_home';
+import ProductListItem_Home from '../../components/ProductListItem_Home';
 
 const Products_Home = () => {
     const { products, addProducts } = useUserStore()
