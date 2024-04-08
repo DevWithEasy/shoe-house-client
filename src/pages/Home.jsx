@@ -2,12 +2,18 @@ import { AiOutlineHome } from 'react-icons/ai';
 import { RiProductHuntLine } from 'react-icons/ri';
 import { TbFileInvoice } from 'react-icons/tb';
 import useUserStore from "../store/userStore";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { RxDashboard } from 'react-icons/rx';
 import { BiLogOutCircle } from 'react-icons/bi';
 
 const Home = () => {
-    const { user } = useUserStore()
+    const {user,removeUser} = useUserStore()
+    const navigate= useNavigate()
+
+    const logout=()=>{
+        removeUser()
+        navigate('/signin')
+    }
     const data = [
         {
             path: '/',
