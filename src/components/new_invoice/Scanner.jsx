@@ -10,7 +10,7 @@ const BarcodeScanner = ({ handleScanSearch,setScaneSearch,audioRef }) => {
     });
     return (
         <div
-            className='absolute right-0 bottom-0 w-[80px] h-[80px] mr-4 p-2 z-10 overflow-hidden rounded-md'
+            className='absolute right-2 top-[68px] w-16 h-16 z-10 overflow-hidden rounded-md'
         >
             <video
                 ref={ref}

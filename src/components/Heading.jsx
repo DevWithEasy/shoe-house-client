@@ -20,7 +20,7 @@ const Heading = ({children}) => {
                 }}
                 className='cursor-pointer text-red-500'
             />
-            <span className='text-center text-xl p-2 uppercase'>{children}</span>
+            <span className='text-center md:text-xl p-2 uppercase'>{children}</span>
             </div>
             <Header/>
         </div>
