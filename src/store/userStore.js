@@ -6,12 +6,10 @@ const createUserStore = (set)=>({
     user : {},
     users : [],
     products : [],
-    categories : [],
-    customers : [],
+    brands : [],
     purchases : [],
     invoices : [],
     reports : [],
-    employees : [],
 
     addUser : (data)=>{
         set((state)=>({
@@ -24,9 +22,7 @@ const createUserStore = (set)=>({
             isAuth : false,
             user : {},
             users : [],
-            companies : [],
-            generics : [],
-            customers : [],
+            companies : []
         }))
     },
     addUsers : (users)=>{
@@ -73,18 +69,14 @@ const createUserStore = (set)=>({
         set((state)=>{
             if (path === 'product'){
                     return {products : state.products.filter(product=>product._id !== id)}
-            }else if (path === 'company'){
-                    return {companies : state.companies.filter(company=>company._id !== id)}
-            }else if (path === 'employee'){
-                return {employees : state.employees.filter(employee=>employee._id !== id)}
             } else if (path === 'report'){
                 return {reports : state.reports.filter(report=>report._id !== id)}
             }else if (path === 'purchase'){
                 return {purchases : state.purchases.filter(purchase=>purchase._id !== id)}
             }else if (path === 'invoice'){
                 return {invoices : state.invoices.filter(invoice=>invoice._id !== id)}
-            }else if (path === 'customer'){
-                return {customers : state.customers.filter(customer=>customer._id !== id)}
+            }else if (path === 'brand'){
+                return {brands : state.brands.filter(brand=>brand._id !== id)}
             }else if (path === 'auth'){
                 return {users : state.users.filter(user=>user._id !== id)}
             }

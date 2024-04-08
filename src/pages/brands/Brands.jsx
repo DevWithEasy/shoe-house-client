@@ -6,6 +6,7 @@ import Delete_data from '../../components/Delete_data';
 import Heading from '../../components/Heading';
 import useUserStore from '../../store/userStore';
 import baseUrl from '../../utils/baseUrl';
+import Loading_request from '../../components/Loding_request';
 
 
 const Brands = () => {
@@ -13,14 +14,18 @@ const Brands = () => {
     const {addCategoties,categories} = useUserStore()
     const [remove,setRemove] = useState(false)
     const [query,setQuery] = useState('')
+    const [loading,setLoading] = useState(false)
     const getCategories = async() =>{
+        setLoading(true)
         try {
             const res = await axios.get(`${baseUrl}/api/brand`)
             if(res.status === 200){
+                setLoading(false)
                 addCategoties(res.data.data)
             }
         } catch (error) {
             console.log(error)
+            setLoading(false)
         }
     }
 
@@ -90,6 +95,7 @@ const Brands = () => {
                     </tbody>
                 </table>
             </div>
+            {loading && <Loading_request {...{loading}}/>}
         </div>
     );
 };

@@ -6,14 +6,16 @@ import Delete_data from '../../components/Delete_data';
 import Heading from '../../components/Heading';
 import useUserStore from '../../store/userStore';
 import baseUrl from '../../utils/baseUrl';
+import Loading_request from '../../components/Loding_request';
 
 const Purchases = () => {
     const navigate = useNavigate()
     const { addPurchases, purchases } = useUserStore()
     const [remove, setRemove] = useState(false)
     const [query, setQuery] = useState('')
-
+    const [loading,setLoading] = useState(false)
     const getPurchases = async () => {
+        setLoading(true)
         try {
             const res = await axios.get(`${baseUrl}/api/purchase`,{
                 headers : {
@@ -22,9 +24,11 @@ const Purchases = () => {
             })
             if (res.status === 200) {
                 addPurchases(res.data.data)
+                setLoading(false)
             }
         } catch (error) {
             console.log(error)
+            setLoading(false)
         }
     }
 
@@ -113,6 +117,7 @@ const Purchases = () => {
                     </tbody>
                 </table>
             </div>
+            {loading && <Loading_request {...{loading}}/>}
         </div>
     );
 };

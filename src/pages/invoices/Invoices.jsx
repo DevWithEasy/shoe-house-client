@@ -4,25 +4,31 @@ import { MdDelete, MdInfo } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import Delete_data from '../../components/Delete_data';
 import Heading from '../../components/Heading';
-import Search from '../../components/Search';
 import useUserStore from '../../store/userStore';
 import baseUrl from '../../utils/baseUrl';
+import Loading_request from '../../components/Loding_request';
 
 const Invoices = () => {
     const { invoices, addInvoices } = useUserStore()
     const [remove, setRemove] = useState(false)
     const [query, setQuery] = useState('')
     const navigate = useNavigate()
+    const [loading, setLoading] = useState(false)
     const getInvoices = async () => {
+        setLoading(true)
         try {
             const res = await axios.get(`${baseUrl}/api/invoice/`, {
                 headers: {
                     authorization: localStorage.getItem('token')
                 }
             })
-            addInvoices(res.data.data)
+            if (res.status === 200) {
+                addInvoices(res.data.data)
+                setLoading(false)
+            }
         } catch (error) {
             console.log(error)
+            setLoading(false)
         }
     }
 
@@ -84,7 +90,7 @@ const Invoices = () => {
                                     </td>
                                     <td className="px-6 py-3 text-center">
                                         {invoice?.sale}
-                                        
+
                                     </td>
                                     <td className="px-6 py-3 text-center space-x-2">
                                         <button
@@ -116,6 +122,7 @@ const Invoices = () => {
                     </tbody>
                 </table>
             </div>
+            {loading && <Loading_request {...{loading}}/>}
         </div>
     );
 };
