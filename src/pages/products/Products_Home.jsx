@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import ProductListItem from '../../components/ProductListItem';
 import useUserStore from '../../store/userStore';
 import baseUrl from '../../utils/baseUrl';
 import Heading from '../../components/Heading';
